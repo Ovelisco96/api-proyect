@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
-export class Users  {
-
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,4 +22,7 @@ export class Users  {
 
   @Column()
   phone: number;
+
+  @Column()
+  role: string;
 }

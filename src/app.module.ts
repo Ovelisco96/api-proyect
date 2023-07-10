@@ -6,11 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './core/modules/database/database.module';
 import { UsersModule } from './core/modules/users/users.module';
 import { DataSource } from 'typeorm';
+import { databaseConfig } from './core/modules/database/database.config';
 
 @Module({
   imports: [
     UsersModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, load: [databaseConfig] }),
     DatabaseModule,
   ],
   controllers: [AppController],

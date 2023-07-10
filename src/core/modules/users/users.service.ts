@@ -16,10 +16,6 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  findOne(id: number): Promise<Users> {
-    return this.userRepository.findOne({ where: { id } });
-  }
-
   async findOneByEmail(email: string): Promise<Users> {
     return await this.userRepository.findOne({ where: { email } });
   }
@@ -27,13 +23,30 @@ export class UsersService {
   async findOneById(id: number): Promise<Users> {
     return await this.userRepository.findOne({ where: { id } });
   }
-
-  async remove(id: string): Promise<void> {
-    await this.userRepository.delete(id);
+  /*  {
+    "raw": [],
+    "affected": 1
+  } */
+  async remove(id: number) {
+    const userDelete = await this.userRepository.delete(id);
+    if (userDelete.affected == 1) {
+      return { userDelete, message: `deleted user with id ${id}` };
+    } else {
+      return { message: `user not found` };
+    }
   }
 
   async createUser(user: UserDto): Promise<Users> {
     const newUser = this.userRepository.create(user);
     return await this.userRepository.save(newUser);
+  }
+
+  update(id: number, changes: UserDto) {
+    const user = this.userRepository.findOneBy({ id });
+    if (!user) {
+      // Lanza una excepción o devuelve una respuesta adecuada si el usuario no existe
+    }
+    const userUpdated = Object.assign(user, changes);
+    return userUpdated;
   }
 }

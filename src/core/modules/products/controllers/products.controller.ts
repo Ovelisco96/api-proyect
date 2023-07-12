@@ -10,7 +10,9 @@ import {
   } from '@nestjs/common';
   import { ProductService } from '../services/products.service';
   import { ProductDto } from '../dto/product.dto';
-  import { Product } from '../product.entity';
+  import { Products } from '../entity/product.entity';
+import { ApiTags } from '@nestjs/swagger';
+  @ApiTags('Product')
   @Controller('product')
   export class ProductController {
     constructor(private readonly productService: ProductService) {}
@@ -21,12 +23,12 @@ import {
     }
   
     @Post()
-    createProduct(@Body() user: ProductDto): Promise<Product> {
-      return this.productService.createProduct(user);
+    createProduct(@Body() product: ProductDto): Promise<Products> {
+      return this.productService.createProduct(product);
     }
   
     @Patch(':id')
-    async updateProduct(@Param('id') id: number, @Body() changes: ProductDto) {
+    async updateProduct(@Param('id', ParseIntPipe) id: number, @Body() changes: ProductDto) {
       console.log('BY ID', id);
       return this.productService.update(id, changes);
     }
@@ -37,7 +39,6 @@ import {
         '🚀 ~ file: users.controller.ts:36 ~ UsersController ~ remove ~ id:',
         id,
       );
-  
       return this.productService.remove(id);
     }
   }

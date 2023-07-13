@@ -1,5 +1,11 @@
-
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { Ingredients } from '../../ingredients/entities/ingredient.entity';
 @Entity()
 export class Products {
   @PrimaryGeneratedColumn()
@@ -11,5 +17,7 @@ export class Products {
   @Column()
   price: number;
 
-
+  @ManyToMany(() => Ingredients)
+  @JoinTable()
+  ingredients: Ingredients[];
 }

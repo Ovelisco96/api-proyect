@@ -9,9 +9,11 @@ import { UsersModule } from './core/modules/users/users.module';
 import { DataSource } from 'typeorm';
 import { databaseConfig } from './core/modules/database/database.config';
 import { ProductModule } from './core/modules/products/products.module';
+import { AuthModule } from './core/modules/auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     IngredientsModule,
     ProductModule,
     UsersModule,

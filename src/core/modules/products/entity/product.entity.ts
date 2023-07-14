@@ -17,7 +17,7 @@ export class Products {
   @Column()
   price: number;
 
-  @ManyToMany(() => Ingredients)
+  @ManyToMany(() => Ingredients, (ingredients) => ingredients.product)
   @JoinTable()
   ingredients: Ingredients[];
 }

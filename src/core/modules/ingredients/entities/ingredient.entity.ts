@@ -13,4 +13,7 @@ export class Ingredients {
 
   @Column()
   price: number;
+
+  @ManyToMany(() => Products, (products) => products.ingredients)
+  product: Products[];
 }

@@ -13,7 +13,7 @@ export const databaseConfig = (): IDatabaseConfig => {
       host: process.env.HOST_DATA_BASE,
       port: process.env.PORT_DATA_BASE,
       entities: [__dirname + '/../**/*.entity.{js,ts}'],
-      synchronize: false,
+      synchronize: true,
     },
     test: {
       type: process.env.DIALECT_DATA_BASE,

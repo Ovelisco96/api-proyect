@@ -1,5 +1,5 @@
-
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Products } from '../../products/entity/product.entity';
 @Entity()
 export class Ingredients {
   @PrimaryGeneratedColumn()
@@ -7,11 +7,13 @@ export class Ingredients {
 
   @Column()
   name: string;
+
   @Column()
   variants: string;
 
   @Column()
   price: number;
 
-
+  @ManyToMany(() => Products, (products) => products.ingredients)
+  product: Products[];
 }

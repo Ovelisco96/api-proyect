@@ -15,7 +15,7 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('Products')
 @Controller('products')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(private readonly productService: ProductService) { }
 
   @Get()
   getProducts() /* : Promise<User[]> */ {
@@ -23,7 +23,7 @@ export class ProductController {
   }
 
   @Post()
-  createProduct(@Body() product: ProductDto): Promise<Products> {
+  createProduct(@Body() product: ProductDto)/* : Promise<Products>  */ {
     return this.productService.createProduct(product);
   }
 

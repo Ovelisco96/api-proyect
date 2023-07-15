@@ -1,5 +1,6 @@
 export class IngredientDto {
-    name: string;
-    variants: string;
-    precio: number
+  name: string;
+  variants: string;
+  precio: number;
+  ingredientsIds: number[];
 }

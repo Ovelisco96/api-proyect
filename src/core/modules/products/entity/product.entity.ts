@@ -17,7 +17,12 @@ export class Products {
   @Column()
   price: number;
 
+  @Column({ type: 'date' })
+  fechaEntrega: Date;
+
   @ManyToMany(() => Ingredients, (ingredients) => ingredients.product)
   @JoinTable()
   ingredients: Ingredients[];
+
+
 }

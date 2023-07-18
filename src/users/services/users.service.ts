@@ -4,7 +4,7 @@ import {
   HttpStatus,
   NotFoundException,
 } from '@nestjs/common';
-import { Users } from 'src/core/modules/users/entity/user.entity';
+import { Users } from 'src/users/entity/user.entity';
 import { UpdateUserDto, UserDto } from '../dto/user.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -13,7 +13,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class UsersService {
   constructor(
     @InjectRepository(Users) private userRepository: Repository<Users>,
-  ) {}
+  ) { }
 
   async findAll() /* : Promise<User[]> */ {
     return await this.userRepository.find();

@@ -11,7 +11,7 @@ import { Ingredients } from '../ingredients/entities/ingredient.entity';
   imports: [TypeOrmModule.forFeature([Products, Ingredients])],
   providers: [ProductService],
   controllers: [ProductController],
-  exports: [ProductService],
+  exports: [ProductService, TypeOrmModule],
 })
 
 export class ProductModule { }

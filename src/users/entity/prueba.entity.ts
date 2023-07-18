@@ -1,15 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Orders } from './order.entity';
 @Entity()
-export class Users {
+export class Pruebas {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
-
-  @Column()
-  lastName: string;
 
   @Column()
   email: string;
@@ -25,4 +23,5 @@ export class Users {
 
   @Column()
   role: string;
+
 }

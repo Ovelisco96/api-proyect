@@ -9,9 +9,9 @@ export const dataSourceOptions: DataSourceOptions = {
   host: process.env.HOST_DATA_BASE,
   port: +process.env.PORT_DATA_BASE,
   logging: true,
-  synchronize: false,
-  entities: ['dist/core/modules/**/*.entity{.ts,.js}'],
-  migrations: ['src/core/modules/database/mysql/migrations/*.ts'],
+  synchronize: true,
+  entities: ['dist/src/core/module/**/*.entity{.ts,.js}'],
+  migrations: [`${__dirname}/migrations/*{.ts,.js}`],
   migrationsTableName: 'migrations',
 };
 const AppDataSource = new DataSource(dataSourceOptions);

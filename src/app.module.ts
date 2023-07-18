@@ -1,15 +1,15 @@
-import { IngredientsModule } from './core/modules/ingredients/ingredients.module';
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DatabaseModule } from './core/modules/database/database.module';
-import { UsersModule } from './core/modules/users/users.module';
 import { DataSource } from 'typeorm';
-import { databaseConfig } from './core/modules/database/database.config';
-import { ProductModule } from './core/modules/products/products.module';
-import { AuthModule } from './core/modules/auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+
+import { AppService } from './app.service';
+import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './users/users.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
+import { databaseConfig } from './database/database.config';
+import { AppController } from './app.controller';
+import { ProductModule } from './products/products.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [

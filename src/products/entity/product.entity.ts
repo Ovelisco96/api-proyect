@@ -18,10 +18,18 @@ export class Products {
   price: number;
 
   @Column({ type: 'date' })
-  fechaEntrega: Date;
+  fecha_entrega: Date;
 
   @ManyToMany(() => Ingredients, (ingredients) => ingredients.product)
-  @JoinTable()
+  @JoinTable({
+    name: 'product_ingredients', //nombre de la tabla que tambien puede ser products_has_categories
+    joinColumn: {
+      name: 'product_id', // Relación con la entidad donde estas situado.
+    },
+    inverseJoinColumn: {
+      name: 'ingredients_id', // Relación con la otra entidad.
+    },
+  })
   ingredients: Ingredients[];
 
 

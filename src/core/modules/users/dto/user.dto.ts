@@ -5,9 +5,6 @@ export class UserDto {
   @IsNotEmpty()
   readonly name: string;
 
-  @IsString()
-  readonly lastName: string;
-
   @IsEmail()
   @IsString()
   @IsNotEmpty()
